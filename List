@@ -1,0 +1,82 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace List
+{
+    public class Categories
+    {
+        public string CategoryID { get; set; }
+        public string CategoryName { get; set; }
+        public List<Products> Product { get; set; }
+    }
+
+    public class Products
+    {
+        public string ProductID { get; set; }
+        public string ProductName { get; set; }
+        public string CategoryID;
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Categories Beverages = new Categories();
+            Beverages.CategoryID = "1";
+            Beverages.CategoryName = "Beverages";
+            Products SoftDrinks = new Products();
+            Products Coffees = new Products();
+            Beverages.Product = new List<Products>();
+            Beverages.Product.Add(SoftDrinks);
+            SoftDrinks.ProductName = "Soft Drinks";
+            SoftDrinks.ProductID = "111";
+            Beverages.Product.Add(Coffees);
+            Coffees.ProductName = "Coffees";
+            Coffees.ProductID = "222";
+
+            Categories Condiments = new Categories();
+            Condiments.CategoryID = "2";
+            Condiments.CategoryName = "Condiments";
+            Products Relishes = new Products();
+            Products Spreads = new Products();
+            Products Sauces = new Products();
+            Condiments.Product = new List<Products>();
+            Condiments.Product.Add(Relishes);
+            Relishes.ProductName = "Relishes";
+            Relishes.ProductID = "333";
+            Condiments.Product.Add(Spreads);
+            Spreads.ProductName = "Spreads";
+            Spreads.ProductID = "444";
+            Condiments.Product.Add(Sauces);
+            Sauces.ProductName = "Sauces";
+            Sauces.ProductID = "555";
+
+            List<Categories> Cl = new List<Categories>();
+            Cl.Add(Beverages);
+            Cl.Add(Condiments);
+            Console.WriteLine("PRODUCTS AND THEIR CATEGORIES");
+            foreach (var C in Cl)
+            {
+               
+                if (C.Product.Count > 0)
+                {
+                   
+                    
+                    Console.WriteLine(".............................."+C.CategoryName+"............................");
+                    foreach (var B in C.Product)
+                    {
+                        Console.Write(B.ProductID);
+                        Console.WriteLine("\t"+B.ProductName);
+                    }
+
+                }
+
+            }
+
+            Console.Read();
+        }
+
+    }
+}
