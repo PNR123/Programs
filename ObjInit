@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ObjInit
+{
+    public class Categories
+    {
+        public string CategoryID { get; set; }
+        public string CategoryName { get; set; }
+        
+        public void Display()
+        {
+            Console.WriteLine("CategoryName:" + CategoryName+ "\n"+"CategoryID:" + CategoryID);
+        }
+    }
+
+    
+        public class Program
+        {
+            static void Main(string[] args)
+            {
+                Categories Category1 = new Categories()
+                {
+                    CategoryID = "1",
+                    CategoryName = "Beverages",
+                };
+
+            Categories Category2 = new Categories()
+            {
+                CategoryID = "2",
+                CategoryName = "Condiments",
+                
+            };
+           
+            Category1.Display();
+            Category2.Display();
+            Console.Read();
+
+        }
+        
+        }
+ 
+}
+
