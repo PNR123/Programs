@@ -1,0 +1,69 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ObjCollInitialization
+{
+    public class Categories
+    {
+        public string CategoryID { get; set; }
+        public string CategoryName { get; set; }
+        public List<Products> Product { get; set; }
+    }
+
+    public class Products
+    {
+        public string ProductID { get; set; }
+        public string ProductName { get; set; }
+        public string Quantity { get; set; }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Categories> Cl = new List<Categories>()
+            {
+               new Categories(){ CategoryID="1", CategoryName="Beverages",
+                   Product =new List<Products>()
+                   {
+                    new Products() {ProductID="111", ProductName="Soft Drinks", Quantity="12 Bottles" },
+                    new Products() {ProductID="222", ProductName="Coffees", Quantity="5oz" },
+
+                   }
+               },
+
+                   new Categories(){ CategoryID="2", CategoryName="Condiments",
+                   Product =new List<Products>()
+                   {
+                    new Products() {ProductID="333", ProductName="Relishes", Quantity="10 qty" },
+                    new Products() {ProductID="444", ProductName="Spreads", Quantity="15packs" },
+                   }
+                   }
+            };
+
+            Console.WriteLine("PRODUCTS AND THEIR CATEGORIES");
+            foreach (var C in Cl)
+            {
+
+                if (C.Product.Count > 0)
+                {
+
+
+                    Console.WriteLine(".............................." + C.CategoryName + "............................");
+                    foreach (var B in C.Product)
+                    {
+                        Console.Write(B.ProductID);
+                        Console.WriteLine("\t" + B.ProductName);
+                    }
+
+                }
+
+            }
+
+            Console.Read();
+        }
+
+    }
+}
