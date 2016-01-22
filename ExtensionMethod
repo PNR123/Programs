@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ExtMethods;
+using ExtensionMethods;
+
+namespace ExtMethods
+{
+    public static class MyExtensions
+    {
+        public static double TotalPrice(this Product p)
+        {
+            return (p.Price * p.Quantity);
+        }
+        public static double Tax(this Product p, Product t)
+        {
+            return ((p.Price * p.Quantity)+1 );
+        }
+    }
+}
+namespace ExtensionMethods
+{
+        public class Product
+        {
+            public string ProductName { get; set; }
+            public double Price { get; set; }
+            public double Quantity { get; set; }
+        }
+        class Program
+        {
+            static void Main(string[] args)
+            {
+            List<Product> Products = new List<Product>()
+            {
+                new Product{ProductName = "Soft Drinks......", Price = 5, Quantity= 2},
+                new Product{ProductName = "Coffees..........", Price = 10, Quantity= 5},
+                new Product{ProductName = "Relishes.........", Price = 15, Quantity= 3}
+            };
+
+            foreach (Product p in Products)
+            {
+                Console.WriteLine("{0}  Cost= {1}  Quantity= {2}  (Total Cost: {3}) ", p.ProductName, p.Price, p.Quantity, p.TotalPrice());
+            }
+
+            foreach (Product t in Products)
+            {
+                Console.WriteLine("Total Cost with tax:{0}", t.Tax(t));
+            }
+            Console.Read();
+        }
+
+      }
+}
